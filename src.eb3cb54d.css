@@ -1,0 +1,2 @@
+*{margin:0;padding:0;box-sizing:border-box}body{background-color:#c2aa25}.search-form{display:block;margin-left:auto;margin-right:auto;text-align:center}.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));grid-gap:20px;padding:0;list-style:none;max-width:calc(100vw - 80px);margin:0 auto 30px}.photo-card img{width:100%;object-fit:scale-down}.load-more{display:block;margin-left:auto;margin-right:auto;margin-bottom:50px}
+/*# sourceMappingURL=/goit-js-hw-13-image-finder/src.eb3cb54d.css.map */
