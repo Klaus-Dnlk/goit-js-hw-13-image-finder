@@ -1,7 +1,7 @@
 {{#each this}}
 <div class="photo-card">
-  <a href="{{largeImageURL}}" class="photo_card_link">
-    <img src="{{webformatURL}}" alt="" />
+  <div class="photo_card_link" ">
+    <img src="{{webformatURL}}" alt="" data-big="{{largeImageURL}}"/>
 
     <div class="stats">
     <div class="stats_box_a">
@@ -30,7 +30,7 @@
       </p>
     </div>
     </div>
-  </a>
+  </div>
   
 </div>
 {{/each}}
