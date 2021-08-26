@@ -3,6 +3,7 @@ import { alert, defaultModules } from '../node_modules/@pnotify/core/dist/PNotif
 
 import ImgApiService from './apiService';
 import imgCardTpl from './templates/img-cardTpl.hbs';
+import * as basicLightbox from '../node_modules/basiclightbox';
 
 const refs = {
   searchform: document.querySelector('.search-form'),
@@ -20,19 +21,20 @@ refs.searchform.addEventListener('submit', onSearch);
 function onSearch(e) {
   e.preventDefault();
 
+  clearImageSearchForm();
+  imgApiService.resetPage();
   if (e.currentTarget.elements.query.value === '') {
     return alert('Something goes wrong');
   }
-  clearImageSearchForm();
+
   imgApiService.query = e.currentTarget.elements.query.value;
-  imgApiService.resetPage();
-  imgApiService.fetchImages().then(addImageMarkup);
+
+  imgApiService.fetchImages().then(addImageMarkup).catch(alert('Invalid input. Please try again.'));
 }
 
 // function onLoadMore() {
-//   imgApiService.fetchImages().then(images => {
-//     addImageMarkup(images);
-//     refs.gallery.lastElementChild.scrollIntoView({
+//   imgApiService.fetchImages().then(addImageMarkup);
+//     refs.target.scrollIntoView({
 //       behavior: 'smooth',
 //       block: 'end',
 //     });
@@ -55,8 +57,10 @@ const onEntry = entries => {
   });
 };
 const observer = new IntersectionObserver(onEntry, {
-  rootMargin: '100px',
-  // threshold: 0.5,
+  rootMargin: '50px',
 });
 observer.observe(refs.target);
-// observer.observe(refs.gallery.lastElementChild);
+
+// const instance = basicLightbox.create();
+
+// refs.photoCard.addEventListener('click', instance.show);
